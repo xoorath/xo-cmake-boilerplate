@@ -70,5 +70,6 @@ foreach ($filename in $FilesToRename)
 }
 
 Move-Item "$oldProjName/$oldExeName" "$oldProjName/$exeName"
+Move-Item "$oldProjName/$oldDllName/Include/$oldDllName" "$oldProjName/$oldDllName/Include/$dllName"
 Move-Item "$oldProjName/$oldDllName" "$oldProjName/$dllName"
 Move-Item "$oldProjName" "$projectName"
