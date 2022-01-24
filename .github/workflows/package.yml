@@ -1,0 +1,28 @@
+name: Build and Package
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  package-windows:
+    strategy:
+      matrix:
+        arch: [x86, x64]
+        configuration: [Test, Debug, Profile, Release]
+    runs-on: Windows-2019
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+      - name: Run Package_Windows_${{ matrix.arch }}.ps1 -${{ matrix.configuration }}
+        run: ./Tools/Windows/Powershell/Package_Windows_${{ matrix.arch }}.ps1 -Config ${{ matrix.configuration }}
+        shell: pwsh
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Windows ${{ matrix.arch }} ${{ matrix.configuration }}
+          path: Package/Windows_${{ matrix.arch }}/*.zip
