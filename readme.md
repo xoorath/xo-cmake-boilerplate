@@ -2,6 +2,8 @@
 
 A cmake project setup for quickly creating C++ projects using cmake.
 
+[![Build and Package](https://github.com/xoorath/xo-cmake-boilerplate/actions/workflows/package.yml/badge.svg)](https://github.com/xoorath/xo-cmake-boilerplate/actions/workflows/package.yml)
+
 ---
 
 ## Compiling
