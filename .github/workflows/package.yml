@@ -16,16 +16,23 @@ jobs:
         configuration: [Test, Debug, Profile, Release]
     runs-on: Windows-2019
     steps:
+      - name: Export Environment Variables
+        run: |
+          $short_sha=("${{ github.sha }}").substring(0, 7)
+          Add-Content -Path $env:GITHUB_ENV -Value "GITHUB_SHORT_SHA=$short_sha"
+        shell: pwsh
+        
       - uses: actions/checkout@v1
         with:
           submodules: true
+          
       - name: Run Package_Windows_${{ matrix.arch }}.ps1 -${{ matrix.configuration }}
         run: ./Tools/Windows/Powershell/Package_Windows_${{ matrix.arch }}.ps1 -Config ${{ matrix.configuration }}
         shell: pwsh
 
       - uses: actions/upload-artifact@v2
         with:
-          name: xo-engine ${GITHUB_SHA::6} Win ${{ matrix.arch }} ${{ matrix.configuration }}
+          name: xo-engine ${{ env.GITHUB_SHORT_SHA }} Win ${{ matrix.arch }} ${{ matrix.configuration }}
           path: |
             Package/Windows_${{ matrix.arch }}/**
             !Package/Windows_${{ matrix.arch }}/*.zip
