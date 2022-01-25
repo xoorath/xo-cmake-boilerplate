@@ -50,6 +50,7 @@ if(-not ($confirmed -eq "confirm"))
     "$oldProjName/$oldDllName/Include/$oldDllName/api.h"
     "$oldProjName/$oldDllName/Source/api.cpp"
     "$oldProjName/$oldDllName/Source/api_internal.h"
+    ".github/workflows/package.yml"
 )
 
 # Project root (back from Tools/Windows/Powershell)

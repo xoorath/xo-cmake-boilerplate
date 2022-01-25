@@ -32,7 +32,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: xo ${{ env.GITHUB_SHORT_SHA }} Win ${{ matrix.arch }} ${{ matrix.configuration }}
+          name: xo-ProjectName ${{ env.GITHUB_SHORT_SHA }} Win ${{ matrix.arch }} ${{ matrix.configuration }}
           path: |
             Package/Windows_${{ matrix.arch }}/**
             !Package/Windows_${{ matrix.arch }}/*.zip
