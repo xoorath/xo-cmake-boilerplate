@@ -5,7 +5,7 @@ function New-WindowsBuild(
     $Arch,
 
     [string]
-    [ValidateSet("Debug", "Profile", "Release")]
+    [ValidateSet("Test", "Debug", "Profile", "Release")]
     $Config
 )
 {

@@ -1,10 +1,14 @@
+function Initialize-ThirdParty {
+    # Nothing currently has to be done.
+}
+
 function Initialize-WindowsBuild(
     [string]
     [ValidateSet("x64", "x86")]
     $Arch,
 
     [string]
-    [ValidateSet("Debug", "Profile", "Release")]
+    [ValidateSet("Test", "Debug", "Profile", "Release")]
     $Config
 )
 {
@@ -16,7 +20,10 @@ function Initialize-WindowsBuild(
     
     # Ensure this directory exists
     New-Item $SolutionDir -ItemType Directory -Force
-    
+
+    # Setup any third party libraries that are required for building
+    Initialize-ThirdParty
+
     Push-Location $SolutionDir
     
     if($Arch -eq "x64")

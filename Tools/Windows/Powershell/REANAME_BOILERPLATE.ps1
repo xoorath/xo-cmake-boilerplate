@@ -52,6 +52,9 @@ if(-not ($confirmed -eq "confirm"))
     "$oldProjName/$oldDllName/Source/api_internal.h"
 )
 
+# Project root (back from Tools/Windows/Powershell)
+Push-Location "$PSScriptRoot/../../../"
+
 function Rename-Content($filename)
 {
     (Get-Content -path $filename -Raw) `
@@ -73,3 +76,5 @@ Move-Item "$oldProjName/$oldExeName" "$oldProjName/$exeName"
 Move-Item "$oldProjName/$oldDllName/Include/$oldDllName" "$oldProjName/$oldDllName/Include/$dllName"
 Move-Item "$oldProjName/$oldDllName" "$oldProjName/$dllName"
 Move-Item "$oldProjName" "$projectName"
+
+Pop-Location

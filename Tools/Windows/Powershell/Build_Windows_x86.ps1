@@ -1,10 +1,11 @@
 param (
     [string]
-    [ValidateSet("Debug", "Profile", "Release")]
+    [ValidateSet("Test", "Debug", "Profile", "Release")]
     $Config="Debug"
 )
 
-Push-Location $PSScriptRoot
+# Project root (back from Tools/Windows/Powershell)
+Push-Location "$PSScriptRoot/../../../"
 
 Import-Module "./Tools/Windows/Powershell/Build.psm1" -Force
 

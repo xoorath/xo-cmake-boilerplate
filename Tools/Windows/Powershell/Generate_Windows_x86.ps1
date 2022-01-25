@@ -1,4 +1,5 @@
-Push-Location $PSScriptRoot
+# Project root (back from Tools/Windows/Powershell)
+Push-Location "$PSScriptRoot/../../../"
 
 Import-Module "./Tools/Windows/Powershell/Generate.psm1" -Force
 

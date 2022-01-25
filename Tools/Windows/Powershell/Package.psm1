@@ -5,7 +5,7 @@ function New-Package(
     $Arch,
 
     [string]
-    [ValidateSet("Debug", "Profile", "Release")]
+    [ValidateSet("Test", "Debug", "Profile", "Release")]
     $Config
 )
 {
@@ -20,9 +20,12 @@ function New-Package(
     
     $excludes = New-Object System.Collections.ArrayList
     
+    
     if($Config -eq "Release") {
         $excludes.Add("*.exp")
+        $excludes.Add("*.lib")
     }
+    
     
     Copy-Item -Path "Build/Windows_$Arch/$Config/*" -Destination "Package/Windows_$Arch/$PackageName/" -Exclude $excludes
     Copy-Item -Path "StartupDir/*" -Destination "Package/Windows_$Arch/$PackageName/"

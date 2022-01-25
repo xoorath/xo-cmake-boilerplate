@@ -1,9 +1,9 @@
 #pragma once
 
-#ifdef DYNAMICLIBNAME_EXPORT
-#define DYNAMICLIBNAME __declspec(dllexport)
+#ifdef DYNAMICLIBNAME_EXPORTS
+#define DYNAMICLIBNAME_EXPORT __declspec(dllexport)
 #else
-#define DYNAMICLIBNAME __declspec(dllimport)
+#define DYNAMICLIBNAME_EXPORT __declspec(dllimport)
 #endif
 
 namespace DynamicLibName
@@ -11,5 +11,5 @@ namespace DynamicLibName
 
 
 
-    DYNAMICLIBNAME void aip();
+    DYNAMICLIBNAME_EXPORT void aip();
 }
